@@ -17,7 +17,7 @@
   "scripts": {
     "eslint": "eslint",
     "build": "tsc",
-    "transform": "ts-node --esm ./src/index transform  ./xx.SQL ./test.d.ts"
+    "transform": "ts-node --esm ./src/index transform"
   },
   "dependencies": {
     "chalk": "^5.1.2",
