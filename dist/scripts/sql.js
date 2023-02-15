@@ -33,7 +33,7 @@ export default function (input, output) {
             const buffer = yield readFile(path.resolve(process.cwd(), input));
             const sqlContent = buffer.toString();
             const SQL_TABLE_REGX = /CREATE(\s+)TABLE(\s+)`(?<tablename>(.*))`([\s\S]*?)PRIMARY(\s+)KEY([\s\S]*?);/g;
-            const SQL_TABLE_PARAM_REGX = /`(?<name>(.*))`(\s+)(?<type>(varchar|int|decimal))\((.*)\)(\s+)(NOT|DEFAULT)(\s+)NULL(\s+)(COMMENT|AUTO|INCREMENT)(\s?)(["'](?<description>(.*))['"])/g;
+            const SQL_TABLE_PARAM_REGX = /`(?<name>(.*))`(\s+)(?<type>(varchar|int|decimal))\((.*)\)(\s+)(NOT|DEFAULT)(\s+)NULL(\s+)(COMMENT|AUTO_INCREMENT)(\s?)(["'](?<description>(.*))['"])/g;
             const transformResult = sqlContent.replace(SQL_TABLE_REGX, function (str, ...arg) {
                 const tableName = arg[2];
                 let match = SQL_TABLE_PARAM_REGX.exec(str);
@@ -45,7 +45,7 @@ export default function (input, output) {
                 const jsDoc = "/**\r\n" +
                     "*@description xxxx \r\n" +
                     params.map(({ name, description }) => `*@property ${transformName(name)} -${description || "-"}`).join("\r\n") +
-                    "\r\n*/\r\n";
+                    "\r\n*/";
                 const ts = `type ${transformName(tableName)} = {` +
                     params.map(({ name, type }) => `\r\n\t ${transformName(name)}: ${transformType(type)};`).join("") +
                     "\r\n}\r\n";

@@ -1,8 +1,10 @@
 {
-  "name": "transform",
-  "version": "1.0.7",
+  "name": "nuomi-transform",
+  "version": "1.0.9",
   "description": "transform sql to Typescript or JsDoc",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "keywords": [
     "sql",
     "transform",
