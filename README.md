@@ -1,8 +1,19 @@
 # transform
+- Install:
+```bash
+yarn global nuomi-transform
+// or
+npm i -g nuomi-transform
+```
+- UseAge:
 ```bash
 yarn transform xx.SQL ./test.d.ts
-```
+// or 
+npm link nuomi-transform
 
+nuomi-tf xx.SQL ./test.d.ts
+```
+- Tansform:
 sql(xx.SQL):
 ```
 CREATE TABLE `AHAHAH` (
@@ -20,7 +31,7 @@ transform(test.d.ts):
  *@property emodd -数显
  */
 type AHAHAH = {
-	id: number;
-	emodd: string;
+    id: number;
+    emodd: string;
 };
 ```
